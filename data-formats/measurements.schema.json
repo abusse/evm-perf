@@ -1,0 +1,28 @@
+{ "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {"$ref": "#/definitions/Measurement"},
+  "definitions": {
+    "Measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hostname": {"type": "string"},
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "unit": {"type": "string"},
+        "values": {
+          "type": "array",
+          "items": {"type": "number"}
+        }
+      },
+      "required": [
+        "hostname",
+        "id",
+        "name",
+        "unit",
+        "values"
+      ],
+      "title": "Measurement"
+    }
+  }
+}
