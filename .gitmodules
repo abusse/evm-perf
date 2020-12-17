@@ -1,0 +1,3 @@
+[submodule "meters/openethereum"]
+	path = meters/openethereum
+	url = https://github.com/abusse/evm-perf-meter-openethereum.git
