@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>${title}</title>
+    <style type="text/css">
+        body {
+            font: 14px Helvetica Neue;
+            text-rendering: optimizelegibility;
+        }
+
+        .body {
+            width: 960px;
+            margin: auto;
+        }
+
+        th {
+            font-weight: 200
+        }
+
+        th,
+        td {
+            padding-right: 3px;
+            padding-bottom: 3px;
+        }
+
+        a:link {
+            color: #1F78B4;
+            text-decoration: none;
+        }
+
+        th.ci-bound {
+            opacity: 0.6
+        }
+
+        td.ci-bound {
+            opacity: 0.5
+        }
+
+        .stats {
+            width: 80%;
+            margin: auto;
+            display: flex;
+        }
+
+        .additional_stats {
+            flex: 0 0 60%
+        }
+
+        .adjusted_stats {
+            flex: 0 0 60%
+        }
+
+        .additional_plots {
+            flex: 1
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 300;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 300;
+        }
+
+        .container {
+   text-align: center;
+ }
+
+.container pre {
+  display: inline-block;
+  text-align: left;
+ }
+
+        #footer {
+            height: 40px;
+            background: #888;
+            color: white;
+            font-size: larger;
+            font-weight: 300;
+        }
+
+        #footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        #footer p {
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+        <h2>${title}</h2>
+        <details>
+            <summary>EVM-Assembly</summary>
+                <pre>
+${code}
+                </pre>
+            </details>
+        <div class="absolute">
+            %for t in m_types:
+            <h3>${names[t['measure']]}</h3>
+            <section class="plots">
+                <table width="100%">
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                <a href="${t['img']}-boxplot-large.svg">
+                                    <img src="${t['img']}-boxplot.svg" alt="PDF of Slope" width="450" height="300" />
+                                </a>
+                            </td>
+                            <td>
+                                <a href="${t['img']}-regression-large.svg">
+                                    <img src="${t['img']}-regression.svg" alt="Regression" width="450" height="300" />
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="summary">
+                <div class="container">
+                    <pre>
+${t['summary']}
+                    </pre>
+                </div>
+            </section>
+            <section class="stats">
+                <div class="additional_stats">
+                    <h4>Additional Statistics:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <!--<th title="{confidence} confidence level" class="ci-bound">Lower bound</th>-->
+                                <th>Estimate</th>
+                                <!--<th title="{confidence} confidence level" class="ci-bound">Upper bound</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--<tr>
+                                <td>Slope</td>
+                                <td class="ci-bound">${t['metrics']['slope'][1]}</td>
+                                <td>${t['metrics']['slope'][0]}</td>
+                                <td class="ci-bound">${t['metrics']['slope'][2]}</td>
+                            </tr>
+                            <tr>
+                                <td>R&#xb2;</td>
+                                <td class="ci-bound">${t['metrics']['r2'][1]}</td>
+                                <td>${t['metrics']['r2'][0]}</td>
+                                <td class="ci-bound">${t['metrics']['r2'][2]}</td>
+                            </tr>-->
+                            <tr>
+                                <td>Mean</td>
+                                <!--<td class="ci-bound">${t['metrics']['mean'][1]}</td>-->
+                                <td>${t['metrics']['mean'][0]}</td>
+                                <!--<td class="ci-bound">${t['metrics']['mean'][2]}</td>-->
+                            </tr>
+                            <tr>
+                                <td title="Standard Deviation">Std. Dev.</td>
+                                <!--<td class="ci-bound">${t['metrics']['std'][1]}</td>-->
+                                <td>${t['metrics']['std'][0]}</td>
+                                <!--<td class="ci-bound">${t['metrics']['std'][2]}</td>-->
+                            </tr>
+                            <tr>
+                                <td>Median</td>
+                                <!--<td class="ci-bound">${t['metrics']['median'][1]}</td>-->
+                                <td>${t['metrics']['median'][0]}</td>
+                                <!--<td class="ci-bound">${t['metrics']['median'][2]}</td>-->
+                            </tr>
+                            <tr>
+                                <td title="Median Absolute Deviation">MAD</td>
+                                <!--<td class="ci-bound">${t['metrics']['mad'][1]}</td>-->
+                                <td>${t['metrics']['mad'][0]}</td>
+                                <!--<td class="ci-bound">${t['metrics']['mad'][2]}</td>-->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="additional_stats">
+                    <h4>Adjusted Statistics:</h4>
+                        Removed overhead for: <pre> ${overhead} </pre>
+                        Value: ${t['metrics']['adj_slope']}
+                </div>
+            </section>
+            %endfor
+        </div>
+    </div>
+    <div id="footer">
+        <p>This report was generated by
+            <a href="https://github.com/abusse/evm-perf">ETH-Perf</a></p>
+    </div>
+</body>
+
+</html>
