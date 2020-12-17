@@ -1,0 +1,8 @@
+// ID: pop-loop
+// NAME: TODO
+// DESC: TODO
+// ITER:  50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 4000
+// OVERHEAD: push-32b-rand
+// #START-ITER
+PUSH32 #RAND,32
+POP

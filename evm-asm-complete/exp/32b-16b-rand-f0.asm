@@ -1,0 +1,11 @@
+// ID: exp-32b-16b-rand-f0
+// NAME: TODO
+// DESC: TODO
+// NOTE: Arithmetic
+// ITER: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
+// OVERHEAD: push-16b-const, push-32b-rand, pop-prealloc
+// #START-ITER
+PUSH16 0xF0000000000000000000000000000000
+PUSH32 #RAND,32
+EXP
+POP
