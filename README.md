@@ -1,6 +1,8 @@
-# Project Title
+# EVM-Perf
 
-One Paragraph of project description goes here
+EVM-Perf allows extensive and highly precise performance analysis for the Ethereum Virtual Machine.
+
+This Project (indlucing the README) is work in progress!
 
 ## Getting Started
 
@@ -56,11 +58,6 @@ Give an example
 
 Add additional notes about how to deploy this on a live system
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
@@ -78,7 +75,7 @@ See also the list of [contributors](https://github.com/abusse/evm-perf/contribut
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GPL License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
